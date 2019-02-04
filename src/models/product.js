@@ -1,7 +1,7 @@
 'use strict';
 
-const mogoose = require('mongoose');
-const Schema = mogoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const schema = new Schema({
     title: {
@@ -11,7 +11,7 @@ const schema = new Schema({
     },
     slug: {
         type: String,
-        require: true,
+        require: [true, 'o slug e obrigatório'],
         trim: true,
         index: true,
         unique: true
@@ -25,7 +25,7 @@ const schema = new Schema({
         require: true
     },
     active: {
-        type: boolean,
+        type: Boolean,
         require: true,
         default: true
     },
@@ -35,4 +35,4 @@ const schema = new Schema({
     }]
 });
 
-module.exports = mongoose.model('Product', schema)
+module.exports = mongoose.model('Product', schema);
